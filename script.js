@@ -1,44 +1,51 @@
-/*WDD Lab 8 - Daniel Syrén (20105070).js*/
-function rps() {
-    var p1;
-    var p2;
+/*WDD Lab 9.2 - Daniel Syrén (20105070).js*/
+var computer;
+var max = 3;
+var number;
+var player;
+
+function RPS() {
     document.getElementById("btn").style.display = "none";
-    p1 = prompt("Player 1, please enter rock, paper, or scissors:");
-    if (p1 == "rock") {
-        p2 = prompt("Player 2, please enter rock, paper, or scissors:");
-        if (p2 == "rock") {
-            alert("Player 1 and player 2 draw; rock equals rock!");
-        } else if (p2 == "paper") {
-            alert("Player 2 wins; paper beats rock!");
-        } else if (p2 == "scissors") {
-            alert("Player 1 wins; rock beats scissors!");
+    for (i = 0; i < 3; i++) {
+        player = prompt("Please enter rock, paper, or scissors:");
+        number = Math.floor(Math.random() * max) + 1;
+        if (number == 1) {
+            computer = "rock";
+        } else if (number == 2) {
+            computer = "paper";
         } else {
-            alert("Player 2 had an invalid input; retry!");
+            computer = "scissors";
         }
-    } else if (p1 == "paper") {
-        p2 = prompt("Player 2, please enter rock, paper, or scissors:");
-        if (p2 == "rock") {
-            alert("Player 1 wins; paper beats rock!");
-        } else if (p2 == "paper") {
-            alert("Player 1 and player 2 draw; paper equals paper!");
-        } else if (p2 == "scissors") {
-            alert("Player 2 wins; scissors beats paper!");
+        if (player == "rock") {
+            if (computer == "rock") {
+                alert("Player and computer draw; rock equals rock!");
+            } else if (computer == "paper") {
+                alert("Computer wins; paper beats rock!");
+            } else {
+                alert("Player wins; rock beats scissors!");
+                break;
+            }
+        } else if (player == "paper") {
+            if (computer == "rock") {
+                alert("Player wins; paper beats rock!");
+                break;
+            } else if (computer == "paper") {
+                alert("Player and computer draw; paper equals paper!");
+            } else {
+                alert("Computer wins; scissors beats paper!");
+            }
+        } else if (player == "scissors") {
+            if (computer == "rock") {
+                alert("Computer wins; rock beats scissors!");
+            } else if (computer == "paper") {
+                alert("Player wins; scissors beats paper!");
+                break;
+            } else {
+                alert("Player and computer draw; scissors equals scissors!");
+            }
         } else {
-            alert("Player 2 had an invalid input; retry!");
+            alert("Player had an invalid input; retry!");
         }
-    } else if (p1 == "scissors") {
-        p2 = prompt("Player 2, please enter rock, paper, or scissors:");
-        if (p2 == "rock") {
-            alert("Player 2 wins; rock beats scissors!");
-        } else if (p2 == "paper") {
-            alert("Player 1 wins; scissors beats paper!");
-        } else if (p2 == "scissors") {
-            alert("Player 1 and player 2 draw; scissors equals scissors!");
-        } else {
-            alert("Player 2 had an invalid input; retry!");
-        }
-    } else {
-        alert("Player 1 had an invalid input; retry!");
     }
     document.getElementById("btn").style.display = "block";
 }
