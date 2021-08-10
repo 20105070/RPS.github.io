@@ -1,13 +1,16 @@
-/*WDD Lab 9.2 - Daniel Syrén (20105070).js*/
+/*WDD Lab 10 - Daniel Syrén (20105070).js*/
 var computer;
+var inputs = [];
 var max = 3;
 var number;
 var player;
 
 function RPS() {
     document.getElementById("btn").style.display = "none";
-    for (i = 0; i < 3; i++) {
+    inputs = [];
+    for (i = 0; i < 5; i++) {
         player = prompt("Please enter rock, paper, or scissors:");
+        inputs.push(player);
         number = Math.floor(Math.random() * max) + 1;
         if (number == 1) {
             computer = "rock";
@@ -47,5 +50,6 @@ function RPS() {
             alert("Player had an invalid input; retry!");
         }
     }
+    alert("Player entered: " + inputs.join(", ") + ".");
     document.getElementById("btn").style.display = "block";
 }
